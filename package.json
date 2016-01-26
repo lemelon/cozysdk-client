@@ -1,0 +1,25 @@
+{
+  	"name": "cozysdk-client",
+  	"version": "0.0.1",
+  	"description": "SDK for serverless cozy apps",
+  	"main": "build/cozysdk-client.js",
+  	"scripts": {
+	    "build": "coffee  --output lib --compile src && browserify lib/index.js -d --s cozysdk > dist/cozysdk-client.js",
+	    "prepublish": "npm run build"
+  	},
+  	"repository": {
+  		"type": "git",
+  		"url": "http://github.com/cozy/cozysdk-client"
+  	},
+  	"author": "cozy",
+  	"license": "MIT",
+  	"bugs": {
+    	"url": "https://github.com/cozy/cozysdk-client/issues"
+  	},
+  	"homepage": "https://github.com/cozy/cozysdk-client",
+  	"devDependencies": {
+	    "coffee-jshint": "0.2.2",
+	    "coffee-script": "1.8.0",
+	    "coffeelint": "1.8.1"
+  	}
+}
