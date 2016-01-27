@@ -1,10 +1,7 @@
-getToken = (callback) ->
-    console.log 'getToken'
+
+
+askForToken = ()->
     window.parent.postMessage { action: 'getToken' }, '*'
-    window.addEventListener 'message', (event) ->
-        intent = event.data
-        window.removeEventListener "message", arguments.callee
-        callback intent
 
 module.exports =
     get: (path, attributes, callback)->
@@ -25,22 +22,30 @@ module.exports =
             callback error, body, response
 
 playRequest = (method, path, attributes, callback) ->
+    auth = null
+    askForToken()
     xhr = new XMLHttpRequest
     xhr.open method, "/ds-api/#{path}", true
 
+    eventListening = (event) ->
+        window.removeEventListener 'message', eventListening
+        auth = event.data
+
+    window.addEventListener 'message', eventListening, false
     xhr.onload = ->
-        console.log xhr.response
         return callback null, xhr.response, xhr
 
     xhr.onerror = (e) ->
         err = 'Request failed : #{e.target.status}'
         return callback err
-
-    getToken (res) ->
-        console.log 'addEventListener'
+    
+    setTimeout (->
         xhr.setRequestHeader 'Content-Type', 'application/json'
-        xhr.setRequestHeader 'Authorization', 'Basic ' + btoa(res.appName + ':' + res.token)
+        xhr.setRequestHeader 'Authorization', 'Basic ' + btoa(auth.appName + ':' + auth.token)
+       
         if attributes?
             xhr.send JSON.stringify(attributes)
         else
             xhr.send()
+        return
+    ), 800

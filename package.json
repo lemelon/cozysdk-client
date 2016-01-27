@@ -4,7 +4,7 @@
   	"description": "SDK for serverless cozy apps",
   	"main": "build/cozysdk-client.js",
   	"scripts": {
-	    "build": "coffee  --output lib --compile src && browserify lib/index.js -d --s cozysdk > dist/cozysdk-client.js",
+	    "build": "browserify lib/index.js --debug --s cozydb | exorcist dist/cozysdk-client.js.map > dist/cozysdk-client.js ",
 	    "prepublish": "npm run build"
   	},
   	"repository": {
@@ -20,6 +20,8 @@
   	"devDependencies": {
 	    "coffee-jshint": "0.2.2",
 	    "coffee-script": "1.8.0",
-	    "coffeelint": "1.8.1"
+	    "coffeelint": "1.8.1",
+	    "browserify": "13.0.0",
+	    "exorcist": "0.4.0"
   	}
 }
