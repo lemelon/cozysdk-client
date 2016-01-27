@@ -4,7 +4,7 @@
   	"description": "SDK for serverless cozy apps",
   	"main": "build/cozysdk-client.js",
   	"scripts": {
-	    "build": "browserify lib/index.js --debug --s cozydb | exorcist dist/cozysdk-client.js.map > dist/cozysdk-client.js ",
+	    "build": "coffee -cb --output lib src && browserify lib/index.js --debug --s cozydb | exorcist dist/cozysdk-client.js.map > dist/cozysdk-client.js ",
 	    "prepublish": "npm run build"
   	},
   	"repository": {
