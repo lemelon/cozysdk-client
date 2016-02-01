@@ -1,4 +1,23 @@
-askForToken = ()->
+getToken = (callback)->
+    receiveToken = (event) ->
+        window.removeEventListener 'message', receiveToken
+        {appName, token}  = event.data
+        clearTimeout(timeout)
+        callback? null, {appName, token}
+        callback = null
+    
+    unless window.parent?
+        return callback new Error('no parent window');
+    
+    unless window.parent?.postMessage
+        return callback new Error('get a real browser');
+    
+    timeout = setTimeout -> 
+        callback? new Error('parent doesnt answer')
+        callback = null
+    , 1000
+    
+    window.addEventListener 'message', receiveToken, false
     window.parent.postMessage { action: 'getToken' }, '*'
 
 module.exports =
@@ -20,15 +39,10 @@ module.exports =
             callback error, body, response
 
 playRequest = (method, path, attributes, callback) ->
-    askForToken()
     
-    receiveToken = (event) ->
-        window.removeEventListener 'message', receiveToken
-        auth = event.data
-        sendRequest auth, (error, body, response) ->
-            callback error, body, response
-
-    sendRequest = (auth, callback) ->
+    getToken (err, auth) ->
+        return callback err if err
+        
         xhr = new XMLHttpRequest
         xhr.open method, "/ds-api/#{path}", true
         xhr.onload = ->
@@ -48,4 +62,4 @@ playRequest = (method, path, attributes, callback) ->
         return
 
 
-    window.addEventListener 'message', receiveToken, false
+    
