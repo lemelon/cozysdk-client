@@ -21,12 +21,16 @@ module.exports =
 
 playRequest = (method, path, attributes, callback) ->
     askForToken()
-    xhr = new XMLHttpRequest
-    xhr.open method, "/ds-api/#{path}", true
-
-    eventListening = (event) ->
-        window.removeEventListener 'message', eventListening
+    
+    receiveToken = (event) ->
+        window.removeEventListener 'message', receiveToken
         auth = event.data
+        sendRequest auth, (error, body, response) ->
+            callback error, body, response
+
+    sendRequest = (auth, callback) ->
+        xhr = new XMLHttpRequest
+        xhr.open method, "/ds-api/#{path}", true
         xhr.onload = ->
             return callback null, xhr.response, xhr
 
@@ -43,4 +47,5 @@ playRequest = (method, path, attributes, callback) ->
             xhr.send()
         return
 
-    window.addEventListener 'message', eventListening, false
+
+    window.addEventListener 'message', receiveToken, false
