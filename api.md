@@ -24,7 +24,7 @@ This enables the user to add a new item.
 
 In Cozy, to facilitate data organization, the documents are used via a 'docType' field. This way It can simplify the requesting and organize rights access. 
 
-You need to enter 'docType', so for example if you want to define a request to get all the contacts, you'll have to add "Contacts" as a docType name. You also need to make sure that you added the permissions in the package.json like so:
+You need to enter 'docType', so for example if you want to define a request to get all the contacts, you'll have to add "Contacts" as a docType name. You also need to make sure that you added permissions in the package.json like so:
 
     "cozy-permissions": {
         "Contact": {
