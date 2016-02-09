@@ -62,7 +62,7 @@ create("Contact", {"n": "bob"}, function(response) {
 
 The response of this request will be the id of the new added document.
 
-### find(docType, id, callback)
+### `find(docType, id, callback)`
 
 #### A simple example
 
@@ -78,7 +78,7 @@ This enables users to get data of a specific id.
 
 The response of this request will be a json object with the data of the used id.
 
-### updateAttributes(docType, id, attributes)
+### `updateAttributes(docType, id, attributes)`
 
 This enables the user to update some fields of a document.
 
@@ -90,11 +90,11 @@ The document id that needs to be updated.
 
 The attributes are the fields of a document that are being updated.
 
-### destroy(docType, id, callback)
+### `destroy(docType, id, callback)`
 
 This enables users to delete a specific document from the database.
 
-### defineRequest(docType, name, request)
+### `defineRequest(docType, name, request)`
 
 This enables users to define a request by using the MapReduce method and define a document from their original structure into a new key/value pair. You can then choose to map only a specific field of a document. Here, for example, is a function that can Map the name field of a contact document.
 
@@ -145,7 +145,7 @@ If you run this function [run(docType, name, params)], you will have a result li
 ]
 ```
 
-### run(docType, name, params, callback)
+### `run(docType, name, params, callback)`
 
 This enables users to run a request defined by defineRequest(docType, name, request). The response is an id, a key and a value.
 * 'The keys' is an array in which each of the elements contains a key from the map function and the id of the document that produced it.
@@ -170,6 +170,6 @@ So for example `params` could look like this:
 
 In this case, when you run the function with this param, the only documents that will be retrieved, will be those with 'bob' as a name.
 
-### requestDestroy(docType, name, params, callback)
+### `requestDestroy(docType, name, params, callback)`
 
 This enables users to destroy a document matched by defineRequest(docType, name, request).
