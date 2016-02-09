@@ -48,9 +48,11 @@ The "n" letter is used because this is how the document field has been updated i
 
 #### A simple example
 
-    create("Contact", {"n": "bob"}, function(response) {
-        // You can get the id with response.id
-    });
+```javascript
+create("Contact", {"n": "bob"}, function(response) {
+     // You can get the id with response.id
+});
+```
 
 #### What is the response?
 
