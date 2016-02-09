@@ -32,7 +32,7 @@ You need to enter 'docType', so for example if you want to define a request to g
         }
     }
 
-The 'description' is going to be showned when a user will want to install your application. So I advise you to be persuasive and explain why it needs to access your 'Contact' data.
+'description' is going to be showned when a user installs your application. So I advise you to be persuasive and explain why it needs to access your 'Contact' data.
 
 This is just an example but if you want to work with Emails for example, you'll just need to add "Message" as a cozy-permission and name it as a docType in the define function. 
 
