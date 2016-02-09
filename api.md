@@ -20,11 +20,11 @@ To work with this library, you'll need to use the following functions:
 
 This enables users to add a new item.
 
-#### What is 'docType'?
+#### What is `docType`?
 
-In Cozy, to facilitate data organization, the documents are used via a 'docType' field. This way It can simplify the requesting and organize rights access. 
+In Cozy, to facilitate data organization, the documents are used via a `docType` field. This way It can simplify the requesting and organize rights access. 
 
-You need to enter 'docType', so for example if you want to define a request to get all the contacts, you'll have to add "Contacts" as a docType name. You also need to make sure that you added permissions in package.json like so:
+You need to enter `docType`, so for example if you want to define a request to get all the contacts, you'll have to add `Contacts` as a docType name. You also need to make sure that you added permissions in package.json like so:
 
 ```json
 "cozy-permissions": {
@@ -34,15 +34,15 @@ You need to enter 'docType', so for example if you want to define a request to g
 }
 ```
 
-'description' is going to be showned when a user installs your application. So I advise you to be persuasive and explain why it needs to access your 'Contact' data.
+`description` is going to be showned when a user installs your application. So I advise you to be persuasive and explain why it needs to access your `Contact` data.
 
 This is just an example but if you want to work with Emails for example, you'll just need to add "Message" as a cozy-permission and name it as a docType in the define function. 
 
 Also, in cozy, if the data-system doesn't recognize a docType name, it will create a new one and you'll be able to interact with it.
 
-#### What are 'attributes'?
+#### What are `attributes`?
 
-Attributes are the json object with the new added fields. So for example if I want to add a user contact with bob as a name, I need to add a json object as an attribute as followed:
+`attributes` are the json object with the new added fields. So for example if I want to add a user contact with bob as a name, I need to add a json object as an attribute as followed:
 
 ```json
 {"n": "bob"}
@@ -112,7 +112,7 @@ The call to the emit function is when the mapping takes place. The emit function
 
 The second param is the name of the request you want to create. So for example, if you want to get a contact that starts with an "a", you just need to create a name like "contactthatstartswithana” in order to run it afterwards. It might also be useful to have some [conventions](https://ehealthafrica.github.io/couchdb-best-practices/#naming-conventions-for-views) to requests/views.
 
-#### What is 'request'?
+#### What is `request`?
 
 The third param is the actual request to communicate with the cozy database. You need here to present the third params:
 * Either as a string: `'function(doc) { emit(doc.n, null); }'`
@@ -135,7 +135,7 @@ defineRequest("Contact", "lastName", function(doc) {
 
 If you run this function [run(docType, name, params)], you will have a result like this:
 
-```json
+```javascript
 [
    ...
    { key: "Clarke", value: { n: "Clarke", ... } },
@@ -162,7 +162,7 @@ This enables users to run a request defined by defineRequest(docType, name, requ
 * startKey: only returns document after this key
 * endKey: only returns document before this key
 
-So for example 'param' could look like this:
+So for example `params` could look like this:
 
 ```json
 {key: 'bob'}
