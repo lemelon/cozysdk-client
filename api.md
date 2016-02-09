@@ -99,7 +99,7 @@ This enables the user to define a request by using the MapReduce method and defi
 
 The call to the emit function is when the mapping takes place. The emit function accepts two arguments: a key and a value. Both arguments are optional and will default to null if omitted. As it's helpful to know which document the mapped data came from, the id of the mapped document is also automatically included.
 
-##### What is 'name'?
+#### What is 'name'?
 
 The second param is the name of the request you want to create. So for example, if you want to get a contact that starts with an "a", you just need to create a name like "contactthatstartswithana” in order to run it afterwards. It might also be useful to have some [conventions](https://ehealthafrica.github.io/couchdb-best-practices/#naming-conventions-for-views) to requests/views.
 
