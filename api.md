@@ -36,7 +36,7 @@ You need to enter `docType`, so for example if you want to define a request to g
 
 `description` is going to be showned when a user installs your application. So I advise you to be persuasive and explain why it needs to access your `Contact` data.
 
-This is just an example but if you want to work with Emails for example, you'll just need to add "Message" as a cozy-permission and name it as a docType in the define function. 
+This is just an example but if you want to work with Emails for example, you'll just need to add `Message` as a cozy-permission and name it as a docType in the define function. 
 
 Also, in cozy, if the data-system doesn't recognize a docType name, it will create a new one and you'll be able to interact with it.
 
@@ -48,7 +48,7 @@ Also, in cozy, if the data-system doesn't recognize a docType name, it will crea
 {"n": "bob"}
 ```
 
-The "n" letter is used because this is how the document field has been updated in the couchdb data-system by users who have coded the "Contact" app.
+The `n` letter is used because this is how the document field has been updated in the couchdb data-system by users who have coded the `Contact` app.
 
 #### A simple example
 
@@ -110,14 +110,14 @@ The call to the emit function is when the mapping takes place. The emit function
 
 #### What is `name`?
 
-The second param is the name of the request you want to create. So for example, if you want to get a contact that starts with an "a", you just need to create a name like "contactthatstartswithana” in order to run it afterwards. It might also be useful to have some [conventions](https://ehealthafrica.github.io/couchdb-best-practices/#naming-conventions-for-views) to requests/views.
+The second param is the name of the request you want to create. So for example, if you want to get a contact that starts with an "a", you just need to create a name like `contactthatstartswithana` in order to run it afterwards. It might also be useful to have some [conventions](https://ehealthafrica.github.io/couchdb-best-practices/#naming-conventions-for-views) to requests/views.
 
 #### What is `request`?
 
 The third param is the actual request to communicate with the cozy database. You need here to present the third params:
 * Either as a string: `'function(doc) { emit(doc.n, null); }'`
-* Or you can put the function directly, like this: function(doc) { emit(doc.n, null); }
-* Or finally as an object with map and reduce:  {map: "function(doc) { emit([doc.year, doc.month, doc.day], 1); }", reduce: "_sum"}
+* Or you can put the function directly, like this: `function(doc) { emit(doc.n, null); }`
+* Or finally as an object with map and reduce:  `{map: "function(doc) { emit([doc.year, doc.month, doc.day], 1); }", reduce: "_sum"}`
 
 Here you can easily customize your request and use it whenever you wish in your app.
 
@@ -133,7 +133,7 @@ defineRequest("Contact", "lastName", function(doc) {
 });
 ```
 
-If you run this function [run(docType, name, params)], you will have a result like this:
+If you run this function [`run(docType, name, params)`], you will have a result like this:
 
 ```javascript
 [
