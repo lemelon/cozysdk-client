@@ -2,8 +2,6 @@
 
 As a developer, do you believe it’s impossible to use the resources from another application or play with data from differing applications? Well I'm here to try to prove you can. With cozy you can do things you wouldn't even imagine: you'll be able to code an application without a server and one that can communicate with all the apps on your cozy.
 
-First of all, to be comfortable with this tutorial, I advise you first to get an understanding of what cozy is and how it works. So please go to the following [link](https://dev.cozy.io/) to become a confirmed cozy developer.
-
 ## Let's write a new contact application for cozy
 
 Now, let's get serious and straight to the point: our goal is to build a serverless app with all the list of names of your Contact app. It will also be able to create, update, and delete names.
@@ -18,9 +16,8 @@ Here we are, doing the traditionnal "Hello World" app that can make you want to 
 
 First of all, you need to package the application, to build it as 'serverless': you want to tell cozy to install your app by adding {cozy-type: static} into your package.json file. Also, the index.html file needs to be at the root of your repository with a simple 'Hello World' written in it.
 
-If you still don't know how to deploy it on your cozy, please read these instructions:
+If you still don't know how to deploy it on your cozy, please read this instruction:
 
-* [Getting started with cozy](https://dev.cozy.io/#getting-started)
 * [Package a serverless application](https://dev.cozy.io/#package-a-serverless-application-for-installation-into-your-cozy-platform)
 
 If you managed to deploy it, congratulations! If not, don't worry, we're here to help you: the most easy way to contact us is by joining our [irc channel](http://irc.lc/freenode/cozycloud).
