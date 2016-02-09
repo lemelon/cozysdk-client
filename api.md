@@ -10,7 +10,7 @@ cozysdk-client is a javascript library made by cozy. It enables serverless appli
 
 ## Why this documentation?
 
-This documentation is for developers who want to interact with the data-system without building a server. In other words, it's a documentation for users who write serverless applications.
+This documentation is for developers who want to interact with the data-system without building a server. In other words, It's a documentation for users who write serverless applications.
 
 ## What's inside?
 
@@ -22,6 +22,8 @@ This enables the user to add a new item.
 
 #### What is 'docType'?
 
+In Cozy, to facilitate data organization, the documents are used via a 'docType' field. This way It can simplify the requesting and organize rights access. 
+
 You need to enter 'docType', so for example if you want to define a request to get all the contacts, you'll have to add "Contacts" as a docType name. You also need to make sure that you added the permissions in the package.json like so:
 
     "cozy-permissions": {
@@ -30,7 +32,11 @@ You need to enter 'docType', so for example if you want to define a request to g
         }
     }
 
-This is just an example but if you want to work with Emails for example, you'll just need to add "Message" as a cozy-permission and name it as a docType in the define function.
+The 'description' is going to be showned when a user will want to install your application. So I advise you to be persuasive and explain why it needs to access your 'Contact' data.
+
+This is just an example but if you want to work with Emails for example, you'll just need to add "Message" as a cozy-permission and name it as a docType in the define function. 
+
+Also, in cozy, if the data-system doesn't recognize a docType name, it will create a new one and you'll be able to interact with it.
 
 #### What are 'attributes'?
 
@@ -67,6 +73,14 @@ The response of this request will be a json object with the data of the used id.
 ### updateAttributes(docType, id, attributes)
 
 This enables the user to update some fields of a document.
+
+#### What is 'id'?
+
+The document id that needs to be updated.
+
+#### What are 'attributes'?
+
+The attributes are the fields of a document that are being updated.
 
 ### destroy(docType, id, callback)
 
