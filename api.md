@@ -16,8 +16,8 @@ This document is for developers who want to interact with the data-system withou
 
 To work with this library, you'll need to use the following functions:
 
-### ```javascript
-create(docType, attributes, callback)
+```javascript
+### create(docType, attributes, callback)
 ```
 
 This enables users to add a new item.
