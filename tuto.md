@@ -1,103 +1,111 @@
 # cozysdk-client-tuto
 
-As a developer, do you believe it’s impossible to use the resources from another application or play with data from differing applications? Well I'm here to try to prove you can. With cozy you can do things you wouldn't even imagine: you'll be able to code an application without a server and one that can communicate with all the apps on your cozy.
+As a developer, do you believe it’s hard to use data from another application in your own or to offer a new interface to it? Well I'm here to prove you can. With cozy you can do things you couldn't imagine: you'll be able to code an application without a server, and it can use data from all the apps on your cozy.
 
-## Let's write a new contact application for cozy
+# Let's write a new contact application for cozy
 
-Now, let's get serious and straight to the point: our goal is to build a serverless app with all the list of names of your Contact app. It will also be able to create, update, and delete names.
+Now, let's get started: our goal is to build a serverless app which lists all names from the Contact app. It will also allows the user to create, update, and delete names.
 
-To do so, we'll proceed in different steps. We'll start slowly by deploying a serverless "Hello World" app, and we'll finish with a fully contact app with an angularjs framework. This tutorial is for everybody, from padawan to jedi, so don't be scared of it. We'll explain everything slowly.
+We'll proceed in several steps. We'll start by deploying a serverless "Hello World" app, and we'll finish with a full contact app using the angularjs framework. This tutorial is for everybody, from padawan to jedi! But don't be scared. We'll explain everything.
 
-To see the fully working and finished version, you can go on this [github](https://github.com/lemelon/cozysdk-client-tuto) repo.
+To see the finished version, you can go on this [github](https://github.com/lemelon/cozysdk-client-tuto) repo.
 
-### First step : Hello World !
+## First step : Hello World !
 
-Here we are, doing the traditionnal "Hello World" app that can make you want to start a new career. So here's the [link](https://github.com/lemelon/cozysdk-client-tuto/tree/7b4c33ce8d1281edeb5a8017191a403ee820fde4). 
+Let's do the traditionnal "Hello World" app that have started more than a few careers. 
 
-First of all, you need to package the application, to build it as 'serverless': you want to tell cozy to install your app by adding {cozy-type: static} into your package.json file. Also, the index.html file needs to be at the root of your repository with a simple 'Hello World' written in it.
+Starting from an empty repository, you will need a few files : First, the manifest `package.json` with some fields
+- `name`, the name of your app (without space)
+- `displayName`, the user readable name
+- `description`, what the user will see when installing your app
+- `cozy-type: "static"`, which tells cozy your app doesnt need a server
+- `icon-path`, a path to your app icon
 
-If you still don't know how to deploy it on your cozy, please read this instruction:
+Also, an `index.html` at the root of your repository with your 'Hello World' written in it.
 
+Once you have these, publish your app on github and you should be able to install it from the store on your cozy. If you managed to deploy it, congratulations! If not, don't worry, we're here to help you: the most easy way to contact us is by joining our [irc channel](http://irc.lc/freenode/cozycloud).
+
+You can also find more information about cozy deployment in the following links:
+
+* [Getting started with cozy](https://dev.cozy.io/#getting-started)
 * [Package a serverless application](https://dev.cozy.io/#package-a-serverless-application-for-installation-into-your-cozy-platform)
 
-If you managed to deploy it, congratulations! If not, don't worry, we're here to help you: the most easy way to contact us is by joining our [irc channel](http://irc.lc/freenode/cozycloud).
+At the end of this step, your app should be similar to   [this](https://github.com/lemelon/cozysdk-client-tuto/tree/7b4c33ce8d1281edeb5a8017191a403ee820fde4). 
 
-### Second step: Add AngularJS
+## Second step : Add AngularJS
 
-#### Our objectives for this step
+### Our objectives for this step
 
-Here we are. Trying to test a "Hello World!" example, but on an angularJS way. This method is more like developing an app than a webpage. We'll need to create an entrance of this application, by calling `ng-app="[the name of your app]"` and, of course, the angularJS library. We'll also need to have a regulated main module and create a communication between the view (home.html) and the controller (Home.Ctrl.js).
-
-#### What is AngularJS?
+Making an application in javascript can get complicated fast. Before we try going further, lets pick a framework and use it to display our "Hello World!" example. For this tutorial, we chose angularJS. 
 
 AngularJS is a Single Page Application (SPA) framework. If you don't have an idea of what I'm talking about, I invite you to follow the official AngularJS [tutorial](https://angularjs.org/): it explains exactly what AngularJS is and why it's advantageous for the user.
 
 AngularJS enables the user to easily create dynamic views. It's a very used SPA, so that's why it could be a beneficial learning tool.
 
-#### Link
+To get started with angular, we will need to include the angularJS library in our app and declare an entry to our application, by calling `ng-app="[the name of your app]"`. We'll also need to have a main module and setup the relation between the view (home.html) and the controller (Home.Ctrl.js). If you want some styleguides for proper angular structure and coding, we recommend the[Johnpapa's angular styleguide](https://github.com/johnpapa/angular-styleguide)
 
-* A [document](https://github.com/johnpapa/angular-styleguide) that explains how to write clean code in Angular
+### The skeleton
 
-#### Source code
-
-You can find the source code for this step [here](https://github.com/lemelon/cozysdk-client-tuto/tree/6db477ec69e883e0d837eee447015606b231a9b0)!
+- `controllers/`, [Here](https://docs.angularjs.org/guide/controller) you have a guide about how controllers work
+- `partials/`, All the html (view) files. Templates rendered by ng-view
+- `vendor/`, The different modules (library) needed for angularjs
+- `app.module.js`, Main module (route configuration, angular lib importations...)
 
 If you understand the skeleton and the main logic of this code, you basically understood what angularjs is all about.
 
-#### The skeleton
+### Source code
 
-* controllers/ -> [Here](https://docs.angularjs.org/guide/controller) you have a guide about how controllers work
-* partials/ -> All the html (view) files. Templates rendered by ng-view
-* vendor/ -> The different modules (library) needed for angularjs
-app.module.js -> Main module (route configuration, angular lib importations...)
-index.html -> The entrance point of your application
+You can find the source code for this step [here](https://github.com/lemelon/cozysdk-client-tuto/tree/6db477ec69e883e0d837eee447015606b231a9b0)!
 
-### Third step: Get user contacts from contact app
 
-Now down to some serious business: we're ready to play with different cozy applications. We decided to interact with the `Contact` app but you can also do the same for any other application. Imagine what service you can propose to your future users. But from now on, let's synchronize with contacts by getting all the names of the app...
+## Third step : Get data from contacts app
 
-#### Install the contact app from the store and create or import a few of your contacts
+Now down to some serious business: we're ready to play with different cozy applications. We decided to interact with the "Contact" app but you can also do the same for any other application. Imagine what service you can propose to your future users. But for now, let's synchronize with contacts by getting all the names of the user contacts...
 
-One important part of this section, which will enable you to see the potential of what we're doing, will be the moment you install the 'Contact' app into your cozy and enter some contacts. You can for example import some contacts from google or from your mobile. You can also insert some new contacts manually.
+### Install the contact app from the store and create or import a few of your contacts
 
-#### Our objectives for this step
+To understand what we are doing here, you will need to have some contacts in your cozy database. If you haven't done so already, install the Cozy Contacts application from the store on your cozy and enter some contacts. You can import some contacts from google or insert new contacts manually.
 
-For this step, we'll have to get the list of all the names of the contact app. First of all, we'll need to create permissions in the 'package.json' file to be able to access the data of the `Contact` app. 
+### Our objectives for this step
+
+For this step, we'll have to get the list of all the names from the contact app. First of all, we'll need to ask the cozy and user for permission to access the contacts in the `package.json` file to be able to access the data of the "Contact" app. (Read more about permissions at [The cozy SDK API](https://github.com/lemelon/cozysdk-client/blob/master/api.md#what-is-doctype)).
 
 You'll also need to import two files into your project:
 
-* [cozysdk-client.js](https://github.com/lemelon/cozysdk-client/blob/master/dist/cozysdk-client.js) : this is a javascript cozy library that enables to do clean request to the data-system. You can access this [tutorial](https://github.com/lemelon/cozysdk-client/blob/master/api.md) to learn how to use it.
-* [cozysdk.angular.js](https://github.com/lemelon/cozysdk-client-tuto/blob/master/interfaces/cozysdk.angular.js) : this is the cozy file that enables you to connect the logic of the cozysdk-client library with angularjs. It helps developers to work with organized code in angularjs.
+- [cozysdk-client.js](https://github.com/lemelon/cozysdk-client/blob/master/dist/cozysdk-client.js) : this is a javascript cozy library that enables to do clean request to the data-system. You can access this [tutorial](https://github.com/lemelon/cozysdk-client/blob/master/api.md) to learn how to use it.
+- [cozysdk.angular.js](https://github.com/lemelon/cozysdk-client-tuto/blob/master/interfaces/cozysdk.angular.js) : this is the cozy file that enables you to connect the logic of the cozysdk-client library with angularjs. It helps developers to work with organized code in angularjs.
 
-If you want, you can totally build the hole thing by yourself and only refer to the [data-system api](https://docs.cozy.io/en/hack/cookbooks/data-system.html), but there's a humble saying: ["do not reinvent the wheel"](https://en.wikipedia.org/wiki/Reinventing_the_wheel). So why do complicated when you can do simple?
+Both these files are optional, you could use `postMessage` to retrieve your app token and then do manual `XMLHttpRequest` calls against the [data-system api](https://docs.cozy.io/en/hack/cookbooks/data-system.html), but as the saying goes: ["do not reinvent the wheel"](https://en.wikipedia.org/wiki/Reinventing_the_wheel). So why do complicated when you can do simple?
 
-You also need to add, in your Home.Ctrl.js file, a very simple thing : two requests of a list of name contacts inserted in your contact app. A response of this function needs to be added to scope `home.html`. The way `all` function is being used seems to be a bit surprizing: a function with a `then` and a `catch`... It's actually not that surprizing. What we're doing here is promises. It's some angularjs black magic and if you want to know more about this topic, you can follow this [link](http://www.webdeveasy.com/javascript-promises-and-angularjs-q-service/) for example. 
+We will also need to add, in your Home.Ctrl.js file, a call to [defineRequest](https://github.com/lemelon/cozysdk-client/blob/master/api.md#definerequestdoctype-name-request) and [run](https://github.com/lemelon/cozysdk-client/blob/master/api.md#rundoctype-name-params-callback) to get all Contacts.
 
-Finally, you can call an ng-repeat in the home.html file to get all the contact name list and display it. We can also put a filter to show how simple it is to add it in angularjs, just for the fun.
+We chain and get the results of these calls through promises. If you are not familiar with this syntax, you can read more about it in [this article](http://www.webdeveasy.com/javascript-promises-and-angularjs-q-service/). Once we have the result, we can add it to our scope and display them in `home.html` by using a `ng-repeat`.
 
-#### Source code
+We can also put a filter to show how simple it is to do it in angularjs, just for fun.
+
+### Source code
 
 You can find the source code for this step [here](https://github.com/lemelon/cozysdk-client-tuto/tree/fff542ba62005442768179d3d96989d199dd3f7a)!
 
-#### So what happened?
+### So what happened?
 
 This is exactly where the magic is: two apps that have nothing to do with each other, developed by two different people that might not even know eachother, can work together and be synchronized, or, even better, rationalized. In other words, this demo proves the fact that the apps can talk to eachother. So to think a bit further, the apps can share their data to be able to give transverse services. So because our applications work in the same data space, the apps start to collaborate to deliver a more integrated user experience. They are, in a certain way, smart.
 
-### Fourth step : Create, delete or update a contact
+## Fourth step : Create, delete or update a contact
 
-Ok, now we're going to have some real fun, since our framework is understood and well implemented. 
+Ok, now we're going to have some real fun, since you undestand the framework.
 
-#### Our objectives for this step
+### Our objectives for this step
 
-The only thing we'll have to do here is to add some functions in the controller. Nothing more. The other nice thing that you'll be able to notice, is that every changes is going to refresh in the contact app instantly, even without page reloading.
+For this step, we are only going to add some functions in the controller. Nothing more. The other nice thing you'll be able to notice, is that every changes is going to refresh in the contact app instantly, even without page reloading.
 
-The functions that we'll need are `send`, `update`, and `destroy`. These function respectfully enables to call [`create`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#createdoctype-attributes-callback), [`updateAttributes`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#updateattributesdoctype-id-attributes) and [`destroy`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#destroyid-callback) from the 'cozysdk.angular.js' file.
+The functions that we'll need are 'send', 'update', and 'destroy'. These function respectively enables to call ['create'](https://github.com/lemelon/cozysdk-client/blob/master/api.md#createdoctype-attributes-callback), ['updateAttributes'](https://github.com/lemelon/cozysdk-client/blob/master/api.md#updateattributesdoctype-id-attributes) and ['destroy'](https://github.com/lemelon/cozysdk-client/blob/master/api.md#destroyid-callback) from the 'cozysdk.angular.js' file.
 
-#### Source code
+### Source code
 
 You can find the source code for this step [here](https://github.com/lemelon/cozysdk-client-tuto/tree/fff542ba62005442768179d3d96989d199dd3f7a)!
 
-#### What to keep in mind?
+### What to keep in mind?
 
 So I've added four functions to the controller file : send, update, destroy, and updateContactList. 
 
