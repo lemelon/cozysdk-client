@@ -164,7 +164,7 @@ This enables users to run a request defined by defineRequest(docType, name, requ
 
 So for example `params` could look like this:
 
-```json
+```javascript
 {key: 'bob'}
 ```
 
