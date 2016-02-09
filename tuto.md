@@ -26,7 +26,7 @@ If you managed to deploy it, congratulations! If not, don't worry, we're here to
 
 #### Our objectives for this step
 
-Here we are. Trying to test a "Hello World!" example, but on an angularJS way. This method is more like developing an app than a webpage. We'll need to create an entrance of this application, by calling ng-app="[the name of your app]" and, of course, the angularJS library. We'll also need to have a regulated main module and create a communication between the view (home.html) and the controller (Home.Ctrl.js).
+Here we are. Trying to test a "Hello World!" example, but on an angularJS way. This method is more like developing an app than a webpage. We'll need to create an entrance of this application, by calling `ng-app="[the name of your app]"` and, of course, the angularJS library. We'll also need to have a regulated main module and create a communication between the view (home.html) and the controller (Home.Ctrl.js).
 
 #### What is AngularJS?
 
@@ -54,7 +54,7 @@ index.html -> The entrance point of your application
 
 ### Third step: Get user contacts from contact app
 
-Now down to some serious business: we're ready to play with different cozy applications. We decided to interact with the "Contact" app but you can also do the same for any other application. Imagine what service you can propose to your future users. But from now on, let's synchronize with contacts by getting all the names of the app...
+Now down to some serious business: we're ready to play with different cozy applications. We decided to interact with the `Contact` app but you can also do the same for any other application. Imagine what service you can propose to your future users. But from now on, let's synchronize with contacts by getting all the names of the app...
 
 #### Install the contact app from the store and create or import a few of your contacts
 
@@ -62,7 +62,7 @@ One important part of this section, which will enable you to see the potential o
 
 #### Our objectives for this step
 
-For this step, we'll have to get the list of all the names of the contact app. First of all, we'll need to create permissions in the 'package.json' file to be able to access the data of the "Contact" app. 
+For this step, we'll have to get the list of all the names of the contact app. First of all, we'll need to create permissions in the 'package.json' file to be able to access the data of the `Contact` app. 
 
 You'll also need to import two files into your project:
 
@@ -71,7 +71,7 @@ You'll also need to import two files into your project:
 
 If you want, you can totally build the hole thing by yourself and only refer to the [data-system api](https://docs.cozy.io/en/hack/cookbooks/data-system.html), but there's a humble saying: ["do not reinvent the wheel"](https://en.wikipedia.org/wiki/Reinventing_the_wheel). So why do complicated when you can do simple?
 
-You also need to add, in your Home.Ctrl.js file, a very simple thing : two requests of a list of name contacts inserted in your contact app. A response of this function needs to be added to scope 'home.html'. The way 'all' function is being used seems to be a bit surprizing: a function with a 'then' and a 'catch'... It's actually not that surprizing. What we're doing here is promises. It's some angularjs black magic and if you want to know more about this topic, you can follow this [link](http://www.webdeveasy.com/javascript-promises-and-angularjs-q-service/) for example. 
+You also need to add, in your Home.Ctrl.js file, a very simple thing : two requests of a list of name contacts inserted in your contact app. A response of this function needs to be added to scope `home.html`. The way `all` function is being used seems to be a bit surprizing: a function with a `then` and a `catch`... It's actually not that surprizing. What we're doing here is promises. It's some angularjs black magic and if you want to know more about this topic, you can follow this [link](http://www.webdeveasy.com/javascript-promises-and-angularjs-q-service/) for example. 
 
 Also, what's important is to make controller files as simple as it can get and do all the logic in the factory repository. It's a very convincing (In My Humble Opinion) angularjs norm.
 
@@ -93,7 +93,7 @@ Ok, now we're going to have some real fun, since our framework is understood and
 
 The only thing we'll have to do here is to add some functions in the controller. Nothing more. The other nice thing that you'll be able to notice, is that every changes is going to refresh in the contact app instantly, even without page reloading.
 
-The functions that we'll need are 'send', 'update', and 'destroy'. These function respectfully enables to call ['create'](https://github.com/lemelon/cozysdk-client/blob/master/api.md#createdoctype-attributes-callback), ['updateAttributes'](https://github.com/lemelon/cozysdk-client/blob/master/api.md#updateattributesdoctype-id-attributes) and ['destroy'](https://github.com/lemelon/cozysdk-client/blob/master/api.md#destroyid-callback) from the 'cozysdk.angular.js' file.
+The functions that we'll need are `send`, `update`, and `destroy`. These function respectfully enables to call [`create`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#createdoctype-attributes-callback), [`updateAttributes`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#updateattributesdoctype-id-attributes) and [`destroy`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#destroyid-callback) from the 'cozysdk.angular.js' file.
 
 #### Source code
 
@@ -103,7 +103,7 @@ You can find the source code for this step [here](https://github.com/lemelon/coz
 
 So I've added four functions to the controller file : send, update, destroy, and updateContactList. 
 
-The only complex call is the ‘all' request. That is why I decided to factorize it as the Contact.Fctr.js file.
+The only complex call is the `all` request. That is why I decided to factorize it as the Contact.Fctr.js file.
 
 ### Going further
 
