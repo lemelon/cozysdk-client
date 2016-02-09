@@ -22,7 +22,7 @@ If you still don't know how to deploy it on your cozy, please read this instruct
 
 If you managed to deploy it, congratulations! If not, don't worry, we're here to help you: the most easy way to contact us is by joining our [irc channel](http://irc.lc/freenode/cozycloud).
 
-### Second step : Add AngularJS
+### Second step: Add AngularJS
 
 #### Our objectives for this step
 
@@ -52,7 +52,7 @@ If you understand the skeleton and the main logic of this code, you basically un
 app.module.js -> Main module (route configuration, angular lib importations...)
 index.html -> The entrance point of your application
 
-### Third step : Get user contacts from contact app
+### Third step: Get user contacts from contact app
 
 Now down to some serious business: we're ready to play with different cozy applications. We decided to interact with the "Contact" app but you can also do the same for any other application. Imagine what service you can propose to your future users. But from now on, let's synchronize with contacts by getting all the names of the app...
 

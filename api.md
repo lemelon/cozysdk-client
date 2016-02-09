@@ -18,7 +18,7 @@ To work with this library, you'll need to use the following functions:
 
 ### create(docType, attributes, callback)
 
-This enables the user to add a new item.
+This enables users to add a new item.
 
 #### What is 'docType'?
 
@@ -44,7 +44,7 @@ Attributes are the json object with the new added fields. So for example if I wa
 
      {"n": "bob"}
 
-The "n" letter is used because this is how the document field has been updated in the couchdb data-system by the user who has coded the "Contact" app.
+The "n" letter is used because this is how the document field has been updated in the couchdb data-system by users who have coded the "Contact" app.
 
 #### A simple example
 
@@ -64,7 +64,7 @@ The response of this request will be the id of the new added document.
          // The response will be the data of all the document of this specific id
      });
 
-This enables the user to get data of a specific id.
+This enables users to get data of a specific id.
 
 #### What is the response?
 
@@ -74,32 +74,33 @@ The response of this request will be a json object with the data of the used id.
 
 This enables the user to update some fields of a document.
 
-#### What is 'id'?
+#### What is `id`?
 
 The document id that needs to be updated.
 
-#### What are 'attributes'?
+#### What are `attributes`?
 
 The attributes are the fields of a document that are being updated.
 
 ### destroy(docType, id, callback)
 
-This enables the user to delete a specific document from the database.
+This enables users to delete a specific document from the database.
 
 ### defineRequest(docType, name, request)
 
-This enables the user to define a request by using the MapReduce method and define a document from their original structure into a new key/value pair. You can then choose to map only a specific field of a document. Here, for example, is a function that can Map the name field of a contact document.
+This enables users to define a request by using the MapReduce method and define a document from their original structure into a new key/value pair. You can then choose to map only a specific field of a document. Here, for example, is a function that can Map the name field of a contact document.
 
-    function(doc) {
-        if (doc.n) {
-            emit(doc.n);
-		}
-    }
-
+```javascript
+function(doc) {
+    if (doc.n) {
+        emit(doc.n);
+	}
+}
+```
 
 The call to the emit function is when the mapping takes place. The emit function accepts two arguments: a key and a value. Both arguments are optional and will default to null if omitted. As it's helpful to know which document the mapped data came from, the id of the mapped document is also automatically included.
 
-#### What is 'name'?
+#### What is `name`?
 
 The second param is the name of the request you want to create. So for example, if you want to get a contact that starts with an "a", you just need to create a name like "contactthatstartswithana” in order to run it afterwards. It might also be useful to have some [conventions](https://ehealthafrica.github.io/couchdb-best-practices/#naming-conventions-for-views) to requests/views.
 
@@ -116,33 +117,35 @@ Here you can easily customize your request and use it whenever you wish in your 
 
 Imagine you have a cozy database with contact records and you want a view of those records using the name of each user as keys. If so, you can easily do the following:
 
-
-    defineRequest("Contact", "lastName", function(doc) {
-        if (doc.n) {
-            emit(doc.n, doc);
-        }
-     });
-
+```javascript
+defineRequest("Contact", "lastName", function(doc) {
+    if (doc.n) {
+        emit(doc.n, doc);
+    }
+});
+```
 
 If you run this function [run(docType, name, params)], you will have a result like this:
 
-    [
-       ...
-       { key: "Clarke", value: { n: "Clarke", ... } },
-       { key: "Kelly",  value: { n: "Kelly",  ... } },
-       { key: "Smith",  value: { n: "Smith",  ... } },
-       ...
-    ]
+```json
+[
+   ...
+   { key: "Clarke", value: { n: "Clarke", ... } },
+   { key: "Kelly",  value: { n: "Kelly",  ... } },
+   { key: "Smith",  value: { n: "Smith",  ... } },
+   ...
+]
+```
 
 ### run(docType, name, params, callback)
 
-This enables the user to run a request defined by defineRequest(docType, name, request). The response is an id, a key and a value.
+This enables users to run a request defined by defineRequest(docType, name, request). The response is an id, a key and a value.
 * 'The keys' is an array in which each of the elements contains a key from the map function and the id of the document that produced it.
 * Values is an array of the values produced by the map function.
 
-#### What is 'params'?
+#### What is `params`?
 
-'params' enables the user to fine tune what he or she wants to get.
+`params` enables users to fine tune what they want to get.
 
 * key: only returns document for this key
 * keys: [only returns document for this array of keys]
@@ -153,10 +156,12 @@ This enables the user to run a request defined by defineRequest(docType, name, r
 
 So for example 'param' could look like this:
 
-    {key: 'bob'}
+```json
+{key: 'bob'}
+```
 
 In this case, when you run the function with this param, the only documents that will be retrieved, will be those with 'bob' as a name.
 
 ### requestDestroy(docType, name, params, callback)
 
-This enables the user to destroy a document matched by defineRequest(docType, name, request).
+This enables users to destroy a document matched by defineRequest(docType, name, request).
