@@ -96,6 +96,19 @@ This enables users to delete a specific document from the database.
 
 ### `defineRequest(docType, name, request)`
 
+#### What is `name`?
+
+The second param is the name of the request you want to create. So for example, if you want to get a contact that starts with an "a", you just need to create a name like `contactthatstartswithana` in order to run it afterwards. It might also be useful to have some [conventions](https://ehealthafrica.github.io/couchdb-best-practices/#naming-conventions-for-views) to requests/views.
+
+#### What is `request`?
+
+The third param is the actual request to communicate with the cozy database. You need here to present the third params:
+* Either as a string: `'function(doc) { emit(doc.n, null); }'`
+* Or you can put the function directly, like this: `function(doc) { emit(doc.n, null); }`
+* Or finally as an object with map and reduce:  `{map: "function(doc) { emit([doc.year, doc.month, doc.day], 1); }", reduce: "_sum"}`
+
+#### The MapReduce method
+
 This enables users to define a request by using the MapReduce method and define a document from their original structure into a new key/value pair. You can then choose to map only a specific field of a document. Here, for example, is a function that can Map the name field of a contact document.
 
 ```javascript
@@ -107,17 +120,6 @@ function(doc) {
 ```
 
 The call to the emit function is when the mapping takes place. The emit function accepts two arguments: a key and a value. Both arguments are optional and will default to null if omitted. As it's helpful to know which document the mapped data came from, the id of the mapped document is also automatically included.
-
-#### What is `name`?
-
-The second param is the name of the request you want to create. So for example, if you want to get a contact that starts with an "a", you just need to create a name like `contactthatstartswithana` in order to run it afterwards. It might also be useful to have some [conventions](https://ehealthafrica.github.io/couchdb-best-practices/#naming-conventions-for-views) to requests/views.
-
-#### What is `request`?
-
-The third param is the actual request to communicate with the cozy database. You need here to present the third params:
-* Either as a string: `'function(doc) { emit(doc.n, null); }'`
-* Or you can put the function directly, like this: `function(doc) { emit(doc.n, null); }`
-* Or finally as an object with map and reduce:  `{map: "function(doc) { emit([doc.year, doc.month, doc.day], 1); }", reduce: "_sum"}`
 
 Here you can easily customize your request and use it whenever you wish in your app.
 

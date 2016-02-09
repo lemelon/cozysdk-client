@@ -73,8 +73,6 @@ If you want, you can totally build the hole thing by yourself and only refer to 
 
 You also need to add, in your Home.Ctrl.js file, a very simple thing : two requests of a list of name contacts inserted in your contact app. A response of this function needs to be added to scope `home.html`. The way `all` function is being used seems to be a bit surprizing: a function with a `then` and a `catch`... It's actually not that surprizing. What we're doing here is promises. It's some angularjs black magic and if you want to know more about this topic, you can follow this [link](http://www.webdeveasy.com/javascript-promises-and-angularjs-q-service/) for example. 
 
-Also, what's important is to make controller files as simple as it can get and do all the logic in the factory repository. It's a very convincing (In My Humble Opinion) angularjs norm.
-
 Finally, you can call an ng-repeat in the home.html file to get all the contact name list and display it. We can also put a filter to show how simple it is to add it in angularjs, just for the fun.
 
 #### Source code
@@ -102,8 +100,6 @@ You can find the source code for this step [here](https://github.com/lemelon/coz
 #### What to keep in mind?
 
 So I've added four functions to the controller file : send, update, destroy, and updateContactList. 
-
-The only complex call is the `all` request. That is why I decided to factorize it as the Contact.Fctr.js file.
 
 ### Going further
 
