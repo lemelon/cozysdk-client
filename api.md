@@ -2,15 +2,15 @@
 
 SDK for cozy apps without a server.
 
-If you want to understand how to write an app without a server with cozy, you can also follow this [tutorial](https://github.com/lemelon/cozysdk-client/blob/master/tuto.md).
+If you want to understand how to write apps without a server with cozy, you can also follow this [tutorial](https://github.com/lemelon/cozysdk-client/blob/master/tuto.md).
 
 ## What is it for?
 
 cozysdk-client is a javascript library made by cozy. It enables serverless applications to make requests to the data-system easily.
 
-## Why this documentation?
+## Why this document?
 
-This documentation is for developers who want to interact with the data-system without building a server. In other words, It's a documentation for users who write serverless applications.
+This document is for developers who want to interact with the data-system without building a server. In other words, It's a document for users who write serverless applications.
 
 ## What's inside?
 
