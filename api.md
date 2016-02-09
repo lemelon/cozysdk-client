@@ -26,11 +26,13 @@ In Cozy, to facilitate data organization, the documents are used via a 'docType'
 
 You need to enter 'docType', so for example if you want to define a request to get all the contacts, you'll have to add "Contacts" as a docType name. You also need to make sure that you added permissions in package.json like so:
 
-    "cozy-permissions": {
-        "Contact": {
-            "description": "To easily find your contact when talking about someone."
-        }
+```json
+"cozy-permissions": {
+    "Contact": {
+        "description": "To easily find your contact when talking about someone."
     }
+}
+```
 
 'description' is going to be showned when a user installs your application. So I advise you to be persuasive and explain why it needs to access your 'Contact' data.
 
@@ -42,15 +44,19 @@ Also, in cozy, if the data-system doesn't recognize a docType name, it will crea
 
 Attributes are the json object with the new added fields. So for example if I want to add a user contact with bob as a name, I need to add a json object as an attribute as followed:
 
-     {"n": "bob"}
+```json
+{"n": "bob"}
+```
 
 The "n" letter is used because this is how the document field has been updated in the couchdb data-system by users who have coded the "Contact" app.
 
 #### A simple example
 
-    create("Contact", {"n": "bob"}, function(response) {
-        // You can get the id with response.id
-    });
+```javascript
+create("Contact", {"n": "bob"}, function(response) {
+    // You can get the id with response.id
+});
+```
 
 #### What is the response?
 
@@ -60,9 +66,11 @@ The response of this request will be the id of the new added document.
 
 #### A simple example
 
-    find("Contact", [id of what you want to find], function(response) {
-         // The response will be the data of all the document of this specific id
-     });
+```javascript
+find("Contact", [id of what you want to find], function(response) {
+     // The response will be the data of all the document of this specific id
+ });
+ ```
 
 This enables users to get data of a specific id.
 
