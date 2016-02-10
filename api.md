@@ -53,7 +53,7 @@ The `n` letter is used because this is how the document field has been updated i
 #### A simple example
 
 ```javascript
-create("Contact", {"n": "bob"}, function(response) {
+create("Contact", {"n": "bob"}, function(error, response) {
     // You can get the id with response.id
 });
 ```
@@ -67,10 +67,10 @@ The response of this request will be the id of the new added document.
 #### A simple example
 
 ```javascript
-find("Contact", [id of what you want to find], function(response) {
+find("Contact", [id of what you want to find], function(error, response) {
      // The response will be the data of all the document of this specific id
  });
- ```
+```
 
 This enables users to get data of a specific id.
 
@@ -89,6 +89,14 @@ The document id that needs to be updated.
 #### What are `attributes`?
 
 The attributes are the fields of a document that are being updated.
+
+### A simple example
+
+```javascript
+updateAttributes("Contact", [id of the document you want to update], {"n": "sam"}, function(error, response) {
+     // The response will be the updated document
+ });
+```
 
 ### `destroy(docType, id, callback)`
 
@@ -172,6 +180,22 @@ So for example `params` could look like this:
 
 In this case, when you run the function with this param, the only documents that will be retrieved, will be those with 'bob' as a name.
 
+#### A simple example
+
+```javascript
+run("Contact", "lastName", {}, function(error, response) {
+    // You can get the list of lastnames with response.key
+});
+```
+
 ### `requestDestroy(docType, name, params, callback)`
 
 This enables users to destroy a document matched by defineRequest(docType, name, request).
+
+#### A simple example
+
+```javascript
+requestDestroy("Contact", "lastName", {}, function(error, response) {
+    // The request 'lastName' will be destroyed
+});
+```
