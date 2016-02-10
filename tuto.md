@@ -97,7 +97,7 @@ Ok, now we're going to have some real fun, since our framework is understood and
 
 The only thing we'll have to do here is to add some functions in the controller. Nothing more. The other nice thing that you'll be able to notice, is that every changes is going to refresh in the contact app instantly, even without page reloading.
 
-The functions that we'll need are `send`, `update`, and `destroy`. These function respectfully enables to call [`create`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#createdoctype-attributes-callback), [`updateAttributes`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#updateattributesdoctype-id-attributes) and [`destroy`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#destroyid-callback) from the 'cozysdk.angular.js' file.
+The functions that we'll need are `send`, `update`, and `destroy`. These function respectively enables to call [`create`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#createdoctype-attributes-callback), [`updateAttributes`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#updateattributesdoctype-id-attributes) and [`destroy`](https://github.com/lemelon/cozysdk-client/blob/master/api.md#destroyid-callback) from the 'cozysdk.angular.js' file.
 
 #### Source code
 
